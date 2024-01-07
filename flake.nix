@@ -63,6 +63,8 @@
                 | sed "s|$project_dir/||"     \
                 | tee > $export_file
 
+                ./lambdananas . | sed 's/^\.\///' | tee >> $export_file
+
               count=$(wc -l < $export_file)
 
               echo "$count coding style error(s) reported in "$export_file", $(grep -c ": MAJOR:" "$export_file") major, $(grep -c ": MINOR:" "$export_file") minor, $(grep -c ": INFO:" "$export_file") info"
